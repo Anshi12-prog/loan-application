@@ -11,7 +11,7 @@ A production-grade multi-step loan application form built for the ZeTheta Algori
 
 ## Live Demo
 
-[https://lendswift-app.vercel.app](https://lendswift-app.vercel.app)
+[https://lendswift-app.vercel.app](https://loan-application-qvc4.vercel.app/)
 
 ---
 
