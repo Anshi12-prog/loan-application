@@ -147,16 +147,22 @@ export default function Step4Address({ isFirstStep, isLastStep, addToast }) {
   });
 
   const residenceType   = watch('residenceType');
-  const yearsAtAddress  = watch('yearsAtAddress');
-  const sameAsPermanent = watch('sameAsPermanent');
+const yearsAtAddress  = watch('yearsAtAddress');
+const sameAsPermanent = watch('sameAsPermanent');
 
-  const onSubmit = useCallback((data) => {
-    setStepData(4, data);
-    goToNextStep();
-  }, [setStepData, goToNextStep]);
+const onSubmit = useCallback((data) => {
+  console.log('Step 4 data:', data);
+  setStepData(4, data);
+  goToNextStep();
+}, [setStepData, goToNextStep]);
+
+const onError = useCallback((errs) => {
+  console.log('Step 4 errors:', errs);
+}, []);
+
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate>
+    <form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
       <div className="space-y-6">
 
         {/* Current address */}
@@ -259,7 +265,7 @@ export default function Step4Address({ isFirstStep, isLastStep, addToast }) {
       </div>
 
       <StepNavigation
-        onNext={handleSubmit(onSubmit)}
+        onNext={handleSubmit(onSubmit,  onError)}
         onPrev={goToPrevStep}
         onSaveDraft={saveNow}
         isFirstStep={isFirstStep}

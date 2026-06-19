@@ -36,7 +36,10 @@ export function getStep4Schema() {
         { required_error: 'Please select your residence type' },
       ),
 
-      monthlyRent: z.number().min(100, 'Monthly rent must be at least ₹100').optional(),
+      monthlyRent: z.any().optional().transform((val) => {
+        if (val === '' || val === undefined || val === null) return undefined;
+        return Number(val);
+      }),
 
       yearsAtAddress: z
         .number({ required_error: 'Years at address is required' })
